@@ -1,46 +1,92 @@
-import fitz  # PyMuPDF
-
-# Open the PDF file
-pdf_path = 'path_to_your_pdf_file.pdf'
-pdf_document = fitz.open(pdf_path)
-
-# Initialize an empty string to store text content
-text_content = ''
-
-# Iterate through each page and extract text
-for page_num in range(len(pdf_document)):
-    page = pdf_document.load_page(page_num)
-    text_content += page.get_text()
-
-# Close the PDF document
-pdf_document.close()
-
-# Format the extracted text into HTML
-html_content = f'''
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
-    <title>PDF to HTML</title>
-    <style>
-        /* Your CSS styles here */
-        body {{
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
-            margin: 20px;
-        }}
-    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CATALOGO</title>
+    <link rel="Stylesheet" href="Styles.css">
 </head>
 <body>
-    <div class="content">
-        {text_content}
+    <div class="container" id="printArea">
+        <div class="logo"> 
+        <img src="LOGO_COMPROBANTE.png" alt="Logo" class="logo">
+        <div class="header">    
+        <h3>WES JAPAN IMPORTADORA PEREZ</h3>
+        </div>
+        
+        <div class="content">
+            <div class="info-row">
+                <span class="label"><strong>NO. COMPROBANTE:</strong></span>
+                <span id="noComprobante" class="value"></span>
+            </div>
+            <div class="info-row">
+                <span class="label"><strong>FECHA DE DEVOLUCION:</strong></span>
+                <span id="fechaDevolucion" class="value"></span>
+            </div>
+            <div class="info-row">
+                <span class="label"><strong>CÓDIGO DE CLIENTE:</strong></span>
+                <span id="idCliente" class="value"></span>
+            </div>
+            <div class="info-row">
+                <span class="label"><strong>NOMBRE DE CLIENTE:</strong></span>
+                <span id="nombreCliente" class="value"></span>
+            </div>
+            <div class="info-row">
+                <span class="label"><strong>NUMERO VENTA:</strong></span>
+                <span id="noVenta" class="value"></span>
+            </div>
+            <div class="info-row">
+                <span class="label"><strong>FECHA DE VENTA:</strong></span>
+                <span id="fechaVenta" class="value"></span>
+            </div>
+            <div class="info-row">
+                <span class="label"><strong>PRECIO:</strong></span>
+                <span id="precioV" class="value"></span>
+            </div>
+            <div class="info-row">
+                <span class="label"><strong>CÓDIGO:</strong></span>
+                <span id="codigoP" class="value"></span>
+            </div>
+            <div class="info-row">
+                <span class="label"><strong>DESCRIPCIÓN:</strong></span>
+                <span id="descripcionP" class="value"></span>
+            </div>
+            <div class="info-row">
+                <span class="label"><strong>CANTIDAD DEVUELTA:</strong></span>
+                <span id="cantidadDevuelta" class="value"></span>
+            </div>
+            <div class="info-row">
+                <span class="label"><strong>STATUS:</strong></span>
+                <span id="status" class="value"></span>
+            </div>
+            <div class="info-row">
+                <span class="label"><strong>MOTIVO DE DEVOLUCIÓN:</strong></span>
+                <span id="motivoDevolucion" class="value"></span>
+            </div>
+            <div class="info-row">
+                <span class="label"><strong>PROCEDO A:</strong></span>
+                <span id="procedoA" class="value"></span>
+            </div>
+            <div class="info-row">
+                <span class="label"><strong>ASESOR:</strong></span>
+                <span id="nombreAsesor" class="value"></span>
+            </div>
+            <div></div>
+            <div class="signature">
+            <strong>F:</strong><br>
+            <img src="" alt="Firma del asesor">
+            </div>
+
+        <div class="qr-code">
+            <img src="" alt="QR Code">
+        </div>           
+        
+        <div class="footer">
+            <div class="divider">................................................................</div>
+            <div class="bible-verse"><strong>TODO LO PUEDO EN CRISTO QUE ME FORTALECE!</strong></div>
+        </div>
     </div>
+    <button class="print-button">Imprimir</button>
+    <script src="Script.js"></script>
 </body>
 </html>
-'''
-
-# Save as index.html
-html_file_path = 'index.html'
-with open(html_file_path, 'w', encoding='utf-8') as html_file:
-    html_file.write(html_content)
-
-print(f'HTML file saved at: {html_file_path}')
