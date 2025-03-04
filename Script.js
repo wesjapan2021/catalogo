@@ -27,14 +27,14 @@ function formatDate(dateStr) {
 function getUrlParameters() {
     const urlParams = new URLSearchParams(window.location.search);
     const params = {
-        fechaDevolucion: formatDate(urlParams.get('fechaDevolucion')) || '',
-        precioV: urlParams.get('precioV') || '',
-        codigoP: urlParams.get('codigoP') || '',
+        fechaDeHoy: formatDate(urlParams.get('fechaDeHoy')) || '',
         descripcionP: urlParams.get('descripcionP') || '',
-        cantidadDevuelta: urlParams.get('cantidadDevuelta') || '',
-        idFirmaAsesorImagen: urlParams.get('idFirmaAsesorImagen') || '',
-        firmaAsesor: urlParams.get('firmaAsesor') || '',
-        qr: urlParams.get('qr') || ''
+        codigoP: urlParams.get('codigoP') || '',
+        precioV: urlParams.get('precioV') || '',
+        existencias: urlParams.get('existencias') || '',
+        imagenP: urlParams.get('imagenP') || '',
+        idImagenP: urlParams.get('idImagenP') || '',
+        codigo_qr: urlParams.get('codigo_qr') || ''
     };
 
     // Decodificar todos los valores
@@ -55,24 +55,24 @@ function setValues() {
     const params = getUrlParameters();
     
     // Asignar valores a los elementos
-    document.getElementById("fechaDevolucion").textContent = params.fechaDevolucion;
-    document.getElementById("precioV").textContent = params.precioV;
-    document.getElementById("codigoP").textContent = params.codigoP;
+    document.getElementById("fechaDeHoy").textContent = params.fechaDeHoy;
     document.getElementById("descripcionP").textContent = params.descripcionP;
-    document.getElementById("cantidadDevuelta").textContent = params.cantidadDevuelta;
+    document.getElementById("codigoP").textContent = params.codigoP;
+    document.getElementById("precioV").textContent = params.precioV;
+    document.getElementById("existencias").textContent = params.existencias;
     
 // Manejar la imagen de la firma
-    if (params.idFirmaAsesorImagen) {
-        const firmaImg = document.querySelector('.signature img');
-        if (firmaImg) {
-            firmaImg.src = `https://drive.google.com/thumbnail?id=${params.idFirmaAsesorImagen}&sz=4000`;
+    if (params.idImagenP) {
+        const imagenP = document.querySelector('.codigo img');
+        if (imagenP) {
+            imagenP.src = `https://drive.google.com/thumbnail?id=${params.idImagenP}&sz=4000`;
         }
     }
 
     // Generar el código QR
-    const qrImg = document.querySelector('.qr-code img');
-    if (qrImg && params.noComprobante) {
-        qrImg.src = `https://quickchart.io/qr?text=${params.noComprobante}&size=100`;
+    const codigo_qr = document.querySelector('.qr-code img');
+    if (codigo_qr && params.codigoP) {
+        qrImg.src = `https://quickchart.io/qr?text=${params.codigoP}&size=100`;
     }
 }
 
