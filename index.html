@@ -1,0 +1,46 @@
+import fitz  # PyMuPDF
+
+# Open the PDF file
+pdf_path = 'path_to_your_pdf_file.pdf'
+pdf_document = fitz.open(pdf_path)
+
+# Initialize an empty string to store text content
+text_content = ''
+
+# Iterate through each page and extract text
+for page_num in range(len(pdf_document)):
+    page = pdf_document.load_page(page_num)
+    text_content += page.get_text()
+
+# Close the PDF document
+pdf_document.close()
+
+# Format the extracted text into HTML
+html_content = f'''
+<!DOCTYPE html>
+<html>
+<head>
+    <title>PDF to HTML</title>
+    <style>
+        /* Your CSS styles here */
+        body {{
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+        }}
+    </style>
+</head>
+<body>
+    <div class="content">
+        {text_content}
+    </div>
+</body>
+</html>
+'''
+
+# Save as index.html
+html_file_path = 'index.html'
+with open(html_file_path, 'w', encoding='utf-8') as html_file:
+    html_file.write(html_content)
+
+print(f'HTML file saved at: {html_file_path}')
