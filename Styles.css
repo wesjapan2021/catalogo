@@ -43,22 +43,19 @@ body {
     line-height: 2; /* Aumentar el espacio entre líneas */
 }
 
-.signature {
-    text-align: left;
-    font-size: 15px;
 }
 
-.signature img {
+.imgagenP {
     width: 50mm; /* Adjust width to auto */
     height: auto; /* Match the font size */
     align: left;
 }
-.qr-code {
+.codigo_qr {
     text-align: left;
     margin-top: 5mm;
 }
 
-.qr-code img  {
+.codigo_qr img  {
     width: 100px; /* Adjust size as needed */
     height: auto;
 }
