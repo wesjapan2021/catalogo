@@ -6,7 +6,7 @@ body {
     padding: 0.9;
     font-size: 15px;
     text-align: left;
-    width: 110mm; /* Ancho típico para impresoras térmicas */
+    width: 215.9mm; /* Ancho típico para impresoras térmicas */
 }
 
 .container {
@@ -28,7 +28,7 @@ body {
 
 .logo {
     margin: 0.2;
-    width: 110mm; /* Adjust width to auto */
+    width: 215.7mm; /* Adjust width to auto */
     height: auto; /* Match the font size */
     align: left;
 }
@@ -39,14 +39,14 @@ body {
     text-align: left;
     padding: 2.5mm; /* Aumentar el relleno para más espacio */
     font-size: 15px;
-    width: 100mm;
+    width: 215.7mm;
     line-height: 2; /* Aumentar el espacio entre líneas */
 }
 
 }
 
 .imgagenP {
-    width: 50mm; /* Adjust width to auto */
+    width: 210mm; /* Adjust width to auto */
     height: auto; /* Match the font size */
     align: left;
 }
@@ -69,7 +69,7 @@ body {
 /* Print-specific styles */
 @media print {
     .header img {
-        width: 110mm; /* Adjust width to auto */
+        width: 215.9mm; /* Adjust width to auto */
         height: auto; /* Match the font size */
     }
 }
