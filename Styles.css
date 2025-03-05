@@ -46,9 +46,9 @@ body {
 }
 
 .idImagenP {
-    width: 210mm; /* Adjust width to auto */
+    width: 300mm; /* Adjust width to auto */
     height: auto; /* Match the font size */
-    align: left;
+    align: center;
 }
 .codigo_qr {
     text-align: left;
