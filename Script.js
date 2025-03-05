@@ -70,7 +70,7 @@ function setValues() {
     }
 
     // Generar el código QR
-    const codigo_qr = document.querySelector('.qr-code img');
+    const codigo_qr = document.querySelector('.codigo_qr img');
     if (codigo_qr && params.codigoP) {
         codigo_qr.src = `https://quickchart.io/qr?text=${params.codigoP}&size=100`;
     }
