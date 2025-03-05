@@ -31,8 +31,8 @@ function getUrlParameters() {
         descripcionP: urlParams.get('descripcionP') || '',
         codigoP: urlParams.get('codigoP') || '',
         precioV: urlParams.get('precioV') || '',
-        existencias: formatNumber(urlParams.get('existencias')) || '',
-        imagenP: formatImage(urlParams.get('imagenP')) || '',
+        existencias: urlParams.get('existencias') || '',
+        imagenP: urlParams.get('imagenP') || '',
         idImagenP: urlParams.get('idImagenP') || '',
         codigo_qr: urlParams.get('codigo_qr') || ''
     };
