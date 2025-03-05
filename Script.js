@@ -55,13 +55,13 @@ function setValues() {
     const params = getUrlParameters();
     
     // Asignar valores a los elementos
-    document.getElementById("fechaDeHoy").textContent = params.fechaDeHoy;
-    document.getElementById("descripcionP").textContent = params.descripcionP;
-    document.getElementById("codigoP").textContent = params.codigoP;
-    document.getElementById("precioV").textContent = params.precioV;
-    document.getElementById("existencias").textContent = params.existencias;
+    document.getElementById("fechaDeHoy").textContent = sanitizeHTML(params.fechaDeHoy);
+    document.getElementById("descripcionP").textContent = sanitizeHTML(params.descripcionP);
+    document.getElementById("codigoP").textContent = sanitizeHTML(params.codigoP);
+    document.getElementById("precioV").textContent = sanitizeHTML(params.precioV);
+    document.getElementById("existencias").textContent = sanitizeHTML(params.existencias);
     
-// Manejar la imagen de la firma
+    // Manejar la imagen de la firma
     if (params.idImagenP) {
         const imagenP = document.querySelector('.codigo img');
         if (imagenP) {
@@ -72,7 +72,7 @@ function setValues() {
     // Generar el código QR
     const codigo_qr = document.querySelector('.qr-code img');
     if (codigo_qr && params.codigoP) {
-        qrImg.src = `https://quickchart.io/qr?text=${params.codigoP}&size=100`;
+        codigo_qr.src = `https://quickchart.io/qr?text=${params.codigoP}&size=100`;
     }
 }
 
