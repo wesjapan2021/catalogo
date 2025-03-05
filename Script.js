@@ -63,7 +63,7 @@ function setValues() {
     
     // Manejar la imagen del codigo
     if (params.idImagenP) {
-        const imagenP = document.querySelector('.idImagenP');
+        const imagenP = document.querySelector('.imagenP img');
         if (imagenP) {
             imagenP.src = `https://drive.google.com/thumbnail?id=${params.idImagenP}&sz=4000`;
         }
