@@ -61,9 +61,9 @@ function setValues() {
     document.getElementById("precioV").textContent = sanitizeHTML(params.precioV);
     document.getElementById("existencias").textContent = sanitizeHTML(params.existencias);
     
-    // Manejar la imagen de la firma
+    // Manejar la imagen del codigo
     if (params.idImagenP) {
-        const imagenP = document.querySelector('.codigo img');
+        const imagenP = document.querySelector('.idImagenP');
         if (imagenP) {
             imagenP.src = `https://drive.google.com/thumbnail?id=${params.idImagenP}&sz=4000`;
         }
