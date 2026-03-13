@@ -88,6 +88,14 @@ body {
   color: rgb(95, 107, 117);
 }
 
+/* --- OCULTAR DATOS ESPECÍFICOS (CÓDIGO, PRECIO, EXISTENCIAS) --- */
+/* Ocultamos la fila completa que contiene estos IDs */
+.info-row:has(#codigoP),
+.info-row:has(#precioV),
+.info-row:has(#existencias) {
+  display: none !important;
+}
+
 /* --- QR CODE --- */
 .codigo_qr {
   display: flex;
