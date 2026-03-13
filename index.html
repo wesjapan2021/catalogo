@@ -9,6 +9,16 @@
 
 <link rel="stylesheet" href="Styles.css">
 
+<!-- ESTILOS PARA OCULTAR DATOS ESPECÍFICOS -->
+<style>
+  /* Buscamos la fila (info-row) que contiene los IDs y la ocultamos */
+  .info-row:has(#codigoP),
+  .info-row:has(#precioV),
+  .info-row:has(#existencias) {
+    display: none !important;
+  }
+</style>
+
 </head>
 
 <body>
@@ -40,6 +50,7 @@
 <span id="descripcionP" class="value"></span>
 </div>
 
+<!-- Estos elementos siguen aquí para tu Script.js, pero no se verán -->
 <div class="info-row">
 <span class="label"><strong>CÓDIGO:</strong></span>
 <span id="codigoP" class="value"></span>
@@ -86,8 +97,6 @@
 
 <div class="bible-verse">
 <strong>TODO LO PUEDO EN CRISTO QUE ME FORTALECE!</strong>
-</div>
-
 </div>
 
 </div>
