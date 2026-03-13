@@ -1,182 +1,158 @@
-/* ===== ESTILO GENERAL ===== */
-body{
-    font-family: "Segoe UI", Roboto, Arial, sans-serif;
-    margin:0;
-    padding:25px;
-    background:linear-gradient(180deg,#f6f7f9,#e9edf2);
-    color:#2c2c2c;
+/* --- BASE STYLES --- */
+body {
+  font-family: "Segoe UI", Roboto, Arial, sans-serif;
+  margin: 0px;
+  padding: 25px;
+  background: linear-gradient(rgb(246, 247, 249), rgb(233, 237, 242));
+  color: rgb(44, 44, 44);
 }
 
-/* ===== HEADER ===== */
-.header{
-    max-width:260px;
-    margin:auto;
-    text-align:center;
-    padding:18px;
-    background:white;
-    border-radius:14px;
-    box-shadow:0 6px 20px rgba(0,0,0,0.08);
+.container {
+  max-width: 500px; /* Increased to match card width */
+  margin: auto;
 }
 
-.logo{
-    width:260px;
-    max-width:100%;
+/* --- HEADER & LOGO --- */
+.header {
+  max-width: 500px; /* Matched to card width */
+  margin: auto;
+  text-align: center;
+  padding: 20px;
+  background: white;
+  border-radius: 14px;
+  box-shadow: rgba(0, 0, 0, 0.08) 0px 6px 20px;
 }
 
-/* ===== CONTENEDOR ===== */
-#productos{
-    max-width:260px;
-    margin:25px auto;
+.logo {
+  width: 100%; /* Logo same size as card */
+  max-width: 100%;
+  height: auto;
 }
 
-/* ===== TARJETA PRODUCTO ===== */
-.producto{
-    background:white;
-    border-radius:20px;
-    padding:28px;
-    box-shadow:0 10px 30px rgba(0,0,0,0.08);
-    transition:all .35s ease;
+/* --- PRODUCT CARD --- */
+.producto {
+  background: white;
+  border-radius: 20px;
+  padding: 28px;
+  box-shadow: rgba(0, 0, 0, 0.08) 0px 10px 30px;
+  transition: 0.35s;
+  max-width: 500px;
+  margin: 25px auto;
 }
 
-.producto:hover{
-    transform:translateY(-5px);
-    box-shadow:0 16px 40px rgba(0,0,0,0.12);
+.producto:hover {
+  transform: translateY(-5px);
+  box-shadow: rgba(0, 0, 0, 0.12) 0px 16px 40px;
 }
 
-/* ===== IMAGEN GRANDE ===== */
-.producto img{
-    width:260px;
-    max-width:260px;
-    display:block;
-    margin:auto;
-    border-radius:10px;
-    object-fit:contain;
+.producto img {
+  width: 324px; /* 35% bigger than original */
+  max-width: 100%;
+  display: block;
+  margin: 15px auto;
+  border-radius: 10px;
+  object-fit: contain;
 }
 
-/* ===== TITULO ===== */
-.producto h3{
-    font-size:1.6em;
-    margin-top:15px;
-    color:#7a0d03;
-    letter-spacing:0.5px;
+/* --- INFO ROWS --- */
+.info-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 5px;
 }
 
-/* ===== TEXTO ===== */
-.producto p{
-    font-size:1.1em;
-    margin:8px 0;
-    line-height:1.5;
+.label {
+  font-weight: bold;
+  color: #555;
+  text-transform: uppercase;
+  font-size: 0.9em;
 }
 
-.producto strong{
-    color:#222;
+.value {
+  text-align: right;
+  color: #222;
 }
 
-/* ===== PRECIO ===== */
-.precio{
-    font-size:2em;
-    font-weight:700;
-    color:#b11200;
+.precio {
+  font-size: 2em;
+  font-weight: 700;
+  color: rgb(177, 18, 0);
 }
 
-/* ===== EXISTENCIAS ===== */
-.existencias{
-    font-size:1.3em;
-    font-weight:600;
-    color:#5f6b75;
+.existencias {
+  font-size: 1.3em;
+  font-weight: 600;
+  color: rgb(95, 107, 117);
 }
 
-/* ===== IMAGENES PRODUCTO + CAJA ===== */
-.galeria{
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    gap:30px;
-    flex-wrap:wrap;
-    margin-top:25px;
+/* --- QR CODE --- */
+.codigo_qr {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
 }
 
-.galeria img{
-    width:240px;
+.codigo_qr img {
+  width: 65px; /* 50% smaller */
+  height: 65px;
+  border-radius: 8px;
+  background: white;
+  padding: 5px;
+  box-shadow: rgba(0, 0, 0, 0.08) 0px 4px 15px;
 }
 
-/* ===== QR ===== */
-.qr{
-    margin-top:20px;
+/* --- FOOTER --- */
+.footer {
+  margin-top: 30px;
+  text-align: center;
 }
 
-.qr img{
-    width:130px;
-    border-radius:8px;
-    background:white;
-    padding:10px;
-    box-shadow:0 4px 15px rgba(0,0,0,0.08);
+.divider {
+  height: 2px;
+  background: radial-gradient(circle, #ccc 0%, transparent 70%);
+  margin-bottom: 15px;
 }
 
-/* ===== FRASE ===== */
-.frase{
-    margin-top:20px;
-    padding-top:15px;
-    border-top:2px dashed #ccc;
-    font-weight:600;
-    color:#333;
+.bible-verse {
+  font-style: italic;
+  color: #777;
+  font-size: 0.95em;
+  font-weight: 600;
 }
 
-/* ===== BOTON IMPRIMIR ===== */
-.print-button-container{
-    text-align:center;
-    margin-top:25px;
+/* --- PRINT & BUTTONS --- */
+.print-button-container {
+  text-align: center;
+  margin-top: 25px;
 }
 
-.print-button{
-    background:linear-gradient(135deg,#7a0d03,#a31505);
-    border:none;
-    color:white;
-    padding:14px 40px;
-    font-size:18px;
-    border-radius:35px;
-    cursor:pointer;
-    transition:all .3s ease;
-    box-shadow:0 8px 18px rgba(0,0,0,0.25);
+.print-button {
+  background: linear-gradient(135deg, rgb(122, 13, 3), rgb(163, 21, 5));
+  border: none;
+  color: white;
+  padding: 14px 40px;
+  font-size: 18px;
+  border-radius: 35px;
+  cursor: pointer;
+  transition: 0.3s;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 8px 18px;
 }
 
-.print-button:hover{
-    transform:translateY(-3px);
-    box-shadow:0 12px 28px rgba(0,0,0,0.3);
+.print-button:hover {
+  transform: translateY(-3px);
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 12px 28px;
 }
 
-/* ===== IMPRESION ===== */
-@media print{
-
-    body{
-        background:white;
-        padding:0;
-    }
-
-    .print-button-container{
-        display:none;
-    }
-
-    .producto{
-        box-shadow:none;
-        border:1px solid #ddd;
-    }
-
+@media print {
+  body { background: white; padding: 0px; }
+  .print-button-container { display: none; }
+  .producto { box-shadow: none; border: 1px solid rgb(221, 221, 221); }
 }
 
-/* ===== RESPONSIVE ===== */
-@media(max-width:768px){
-
-    body{
-        padding:15px;
-    }
-
-    .producto{
-        padding:20px;
-    }
-
-    .galeria img{
-        width:180px;
-    }
-
+@media (max-width: 768px) {
+  body { padding: 15px; }
+  .producto { padding: 20px; }
 }
