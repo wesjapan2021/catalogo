@@ -25,7 +25,7 @@ body{
 
 /* ===== CONTENEDOR ===== */
 #productos{
-    max-width:900px;
+    max-width:260px;
     margin:25px auto;
 }
 
@@ -46,7 +46,7 @@ body{
 /* ===== IMAGEN GRANDE ===== */
 .producto img{
     width:100%;
-    max-width:520px;
+    max-width:260px;
     display:block;
     margin:auto;
     border-radius:10px;
