@@ -45,7 +45,7 @@ body{
 
 /* ===== IMAGEN GRANDE ===== */
 .producto img{
-    width:100%;
+    width:260px;
     max-width:260px;
     display:block;
     margin:auto;
