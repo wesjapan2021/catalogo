@@ -1,153 +1,160 @@
 /* ===== ESTILO GENERAL ===== */
-body {
+body{
     font-family: "Segoe UI", Roboto, Arial, sans-serif;
-    margin: 0;
-    padding: 30px;
-    background: #f2f4f7;
-    color: #333;
+    margin:0;
+    padding:25px;
+    background:linear-gradient(180deg,#f6f7f9,#e9edf2);
+    color:#2c2c2c;
 }
 
 /* ===== HEADER ===== */
-.header {
-    max-width: 1100px;
-    text-align: center;
-    padding: 30px;
-    background: linear-gradient(135deg,#5b0a02,#7a0d03);
-    color: white;
-    margin: 0 auto 40px auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    border-radius: 12px;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+.header{
+    max-width:900px;
+    margin:auto;
+    text-align:center;
+    padding:18px;
+    background:white;
+    border-radius:14px;
+    box-shadow:0 6px 20px rgba(0,0,0,0.08);
 }
 
-.logo-container {
-    margin-bottom: 15px;
+.logo{
+    width:260px;
+    max-width:100%;
 }
 
-.logo {
-    width: 220px;
-    height: auto;
-    object-fit: contain;
-}
-
-.header .date {
-    margin-top: 10px;
-    font-size: 1.2em;
-    opacity: 0.9;
-}
-
-/* ===== CONTENEDOR PRODUCTOS ===== */
-#productos {
-    max-width: 1100px;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
+/* ===== CONTENEDOR ===== */
+#productos{
+    max-width:900px;
+    margin:25px auto;
 }
 
 /* ===== TARJETA PRODUCTO ===== */
-.producto {
-    background: white;
-    border-radius: 16px;
-    box-shadow: 0 6px 20px rgba(0,0,0,0.08);
-    padding: 30px;
-    transition: all 0.3s ease;
-    text-align: center;
+.producto{
+    background:white;
+    border-radius:20px;
+    padding:28px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.08);
+    transition:all .35s ease;
 }
 
-.producto:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+.producto:hover{
+    transform:translateY(-5px);
+    box-shadow:0 16px 40px rgba(0,0,0,0.12);
 }
 
 /* ===== IMAGEN GRANDE ===== */
-.producto img {
-    width: 100%;
-    max-width: 850px;
-    height: auto;
-    object-fit: contain;
-    margin: 0 auto 20px auto;
-    border-radius: 10px;
+.producto img{
+    width:100%;
+    max-width:520px;
+    display:block;
+    margin:auto;
+    border-radius:10px;
+    object-fit:contain;
 }
 
 /* ===== TITULO ===== */
-.producto h3 {
-    color: #5b0a02;
-    margin: 15px 0;
-    font-size: 1.6em;
+.producto h3{
+    font-size:1.6em;
+    margin-top:15px;
+    color:#7a0d03;
+    letter-spacing:0.5px;
 }
 
 /* ===== TEXTO ===== */
-.producto p {
-    margin: 10px 0;
-    color: #444;
-    font-size: 1.2em;
-    font-weight: 500;
+.producto p{
+    font-size:1.1em;
+    margin:8px 0;
+    line-height:1.5;
+}
+
+.producto strong{
+    color:#222;
 }
 
 /* ===== PRECIO ===== */
-.precio {
-    color: #d90429;
-    font-weight: bold;
-    font-size: 2em;
+.precio{
+    font-size:2em;
+    font-weight:700;
+    color:#b11200;
 }
 
 /* ===== EXISTENCIAS ===== */
-.existencias {
-    color: #6c757d;
-    font-weight: bold;
-    font-size: 1.4em;
+.existencias{
+    font-size:1.3em;
+    font-weight:600;
+    color:#5f6b75;
+}
+
+/* ===== IMAGENES PRODUCTO + CAJA ===== */
+.galeria{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:30px;
+    flex-wrap:wrap;
+    margin-top:25px;
+}
+
+.galeria img{
+    width:240px;
+}
+
+/* ===== QR ===== */
+.qr{
+    margin-top:20px;
+}
+
+.qr img{
+    width:130px;
+    border-radius:8px;
+    background:white;
+    padding:10px;
+    box-shadow:0 4px 15px rgba(0,0,0,0.08);
+}
+
+/* ===== FRASE ===== */
+.frase{
+    margin-top:20px;
+    padding-top:15px;
+    border-top:2px dashed #ccc;
+    font-weight:600;
+    color:#333;
 }
 
 /* ===== BOTON IMPRIMIR ===== */
-.print-button-container {
-    position: fixed;
-    bottom: 25px;
-    right: 25px;
-    z-index: 1000;
+.print-button-container{
+    text-align:center;
+    margin-top:25px;
 }
 
-.print-button {
-    background: linear-gradient(135deg,#5b0a02,#7a0d03);
-    border: none;
-    color: white;
-    padding: 15px 35px;
-    font-size: 16px;
-    cursor: pointer;
-    border-radius: 30px;
-    transition: all 0.3s ease;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.25);
+.print-button{
+    background:linear-gradient(135deg,#7a0d03,#a31505);
+    border:none;
+    color:white;
+    padding:14px 40px;
+    font-size:18px;
+    border-radius:35px;
+    cursor:pointer;
+    transition:all .3s ease;
+    box-shadow:0 8px 18px rgba(0,0,0,0.25);
 }
 
-.print-button:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
-}
-
-.print-button:disabled {
-    background: #ccc;
-    cursor: not-allowed;
-}
-
-/* ===== ERROR ===== */
-.error {
-    text-align: center;
-    color: #5b0a02;
-    font-size: 1.3em;
-    padding: 30px;
+.print-button:hover{
+    transform:translateY(-3px);
+    box-shadow:0 12px 28px rgba(0,0,0,0.3);
 }
 
 /* ===== IMPRESION ===== */
-@media print {
+@media print{
 
     body{
         background:white;
+        padding:0;
     }
 
-    .print-button-container {
-        display: none;
+    .print-button-container{
+        display:none;
     }
 
     .producto{
@@ -158,23 +165,18 @@ body {
 }
 
 /* ===== RESPONSIVE ===== */
-@media (max-width: 768px) {
+@media(max-width:768px){
 
     body{
         padding:15px;
     }
 
-    .producto img {
-        width: 100%;
-        max-width: 100%;
+    .producto{
+        padding:20px;
     }
 
-    .header h1 {
-        font-size: 1.6em;
-    }
-
-    .logo {
-        width: 160px;
+    .galeria img{
+        width:180px;
     }
 
 }
