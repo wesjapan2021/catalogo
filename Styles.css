@@ -45,7 +45,7 @@ body {
   box-shadow: rgba(0, 0, 0, 0.12) 0px 16px 40px;
 }
 
-.idImagenP .idImagenP img {
+.producto .imagenP img {
   width: 324px;
   max-width: 100%;
   display: block;
