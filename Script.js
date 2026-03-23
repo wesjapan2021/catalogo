@@ -60,10 +60,13 @@ function setValues() {
     if(document.getElementById("precioV")) document.getElementById("precioV").textContent = params.precioV;
     if(document.getElementById("existencias")) document.getElementById("existencias").textContent = params.existencias;
     
-    // Manejar la imagen del producto (Google Drive)
-    if (params.idImagenP) {
-        const imgElement = document.querySelector('.imagenP img');
-        if (imgElement) {
+    // Manejar la imagen del producto
+    const imgElement = document.querySelector('.imagenP img');
+    if (imgElement) {
+        // Prioridad: usar imagenP si está disponible, si no usar idImagenP de Google Drive
+        if (params.imagenP) {
+            imgElement.src = params.imagenP;
+        } else if (params.idImagenP) {
             imgElement.src = `https://drive.google.com/thumbnail?id=${params.idImagenP}&sz=4000`;
         }
     }
@@ -79,6 +82,7 @@ function setValues() {
 function printDocument() {
     // Esperar a que las imágenes se carguen completamente
     const printArea = document.getElementById('printArea');
+    const button = document.querySelector('.print-button');
     
     if (typeof html2canvas === 'undefined') {
         console.error('html2canvas no está cargado');
@@ -86,11 +90,11 @@ function printDocument() {
         return;
     }
 
-    // Mostrar indicador de carga
-    const button = document.querySelector('.print-button');
+    // Mostrar indicador de carga y ocultar el botón
     const originalText = button.textContent;
     button.textContent = 'Procesando...';
     button.disabled = true;
+    button.style.display = 'none';
 
     html2canvas(printArea, {
         scale: 2,
@@ -112,11 +116,13 @@ function printDocument() {
         // Restaurar estado del botón
         button.textContent = originalText;
         button.disabled = false;
+        button.style.display = 'block';
     }).catch(error => {
         console.error('Error al capturar la tarjeta:', error);
         alert('Error al descargar la tarjeta. Verifica la consola para más detalles.');
         button.textContent = originalText;
         button.disabled = false;
+        button.style.display = 'block';
     });
 }
 
