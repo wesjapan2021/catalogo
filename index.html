@@ -5,59 +5,48 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>WES JAPAN 2026</title>
     <link rel="stylesheet" href="Styles.css">
-    <!-- HTML2Canvas Library para capturar la tarjeta como PNG -->
+    <!-- HTML2Canvas Library -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 </head>
 <body>
     <div class="container" id="printArea">
-        <!-- HEADER -->
         <div class="header">
             <img src="LOGO_CATALOGO.png" class="logo" alt="Logo">
         </div>
 
-        <!-- TARJETA PRODUCTO -->
         <div class="producto">
             <div class="info">
                 <div class="info-row">
                     <span class="label"><strong>FECHA:</strong></span>
                     <span id="fechaDeHoy" class="value"></span>
                 </div>
-
                 <div class="info-row">
                     <span class="label"><strong>DESCRIPCIÓN:</strong></span>
                     <span id="descripcionP" class="value"></span>
                 </div>
-
-                <!-- Estos elementos se usan en Script.js pero están ocultos por CSS -->
+                <!-- Elementos ocultos por CSS pero necesarios para el Script -->
                 <div class="info-row">
-                    <span class="label"><strong>CÓDIGO:</strong></span>
                     <span id="codigoP" class="value"></span>
                 </div>
-
                 <div class="info-row">
-                    <span class="label"><strong>PRECIO:</strong></span>
-                    <span id="precioV" class="value precio"></span>
+                    <span id="precioV" class="value"></span>
                 </div>
-
                 <div class="info-row">
-                    <span class="label"><strong>EXISTENCIAS:</strong></span>
-                    <span id="existencias" class="value existencias"></span>
+                    <span id="existencias" class="value"></span>
                 </div>
             </div>
 
-            <!-- GALERIA PRODUCTO -->
             <div class="galeria">
                 <div class="imagenP">
-                    <img src="" alt="idImagenP">
+                    <!-- El src se llena dinámicamente -->
+                    <img id="imgProducto" src="" alt="Producto">
                 </div>
             </div>
 
-            <!-- QR -->
             <div class="codigo_qr">
-                <img src="" alt="Codigo QR">
+                <img src="wesito.png" alt="Codigo QR">
             </div>
 
-            <!-- FOOTER -->
             <div class="footer">
                 <div class="divider"></div>
                 <div class="bible-verse">
@@ -66,9 +55,8 @@
             </div>
         </div>
 
-        <!-- BOTON IMPRIMIR -->
         <div class="print-button-container">
-            <button class="print-button">Imprimir</button>
+            <button class="print-button" id="btnDescargar">Descargar Imagen</button>
         </div>
     </div>
 
