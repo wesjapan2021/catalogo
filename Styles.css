@@ -8,13 +8,13 @@ body {
 }
 
 .container {
-  max-width: 500px; /* Increased to match card width */
+  max-width: 500px;
   margin: auto;
 }
 
 /* --- HEADER & LOGO --- */
 .header {
-  max-width: 500px; /* Matched to card width */
+  max-width: 500px;
   margin: auto;
   text-align: center;
   padding: 20px;
@@ -24,7 +24,7 @@ body {
 }
 
 .logo {
-  width: 100%; /* Logo same size as card */
+  width: 100%;
   max-width: 100%;
   height: auto;
 }
@@ -45,8 +45,8 @@ body {
   box-shadow: rgba(0, 0, 0, 0.12) 0px 16px 40px;
 }
 
-.producto img {
-  width: 324px; /* 35% bigger than original */
+.producto .imagenP img {
+  width: 324px;
   max-width: 100%;
   display: block;
   margin: 15px auto;
@@ -88,8 +88,8 @@ body {
   color: rgb(95, 107, 117);
 }
 
-/* --- OCULTAR DATOS ESPECÍFICOS (CÓDIGO, PRECIO, EXISTENCIAS) --- */
-/* Ocultamos la fila completa que contiene estos IDs */
+/* --- OCULTAR DATOS ESPECÍFICOS --- */
+/* Ocultamos las filas de código, precio y existencias */
 .info-row:has(#codigoP),
 .info-row:has(#precioV),
 .info-row:has(#existencias) {
@@ -104,7 +104,7 @@ body {
 }
 
 .codigo_qr img {
-  width: 65px; /* 50% smaller */
+  width: 65px;
   height: 65px;
   border-radius: 8px;
   background: white;
@@ -155,9 +155,9 @@ body {
 }
 
 @media print {
-  body { background: white; padding: 0px; }
-  .print-button-container { display: none; }
-  .producto { box-shadow: none; border: 1px solid rgb(221, 221, 221); }
+  body { background: white !important; padding: 0px !important; }
+  .print-button-container { display: none !important; }
+  .producto { box-shadow: none !important; border: 1px solid rgb(221, 221, 221); transform: none !important; }
 }
 
 @media (max-width: 768px) {
