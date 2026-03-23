@@ -68,16 +68,21 @@ function setValues() {
         }
     }
 
-    // Generar el código QR dinámicamente
+    // Cargar la imagen wesito.png en lugar de generar código QR dinámicamente
     const qrElement = document.querySelector('.codigo_qr img');
-    if (qrElement && params.codigoP) {
-        qrElement.src = `https://quickchart.io/qr?text=${encodeURIComponent(params.codigoP)}&size=100`;
+    if (qrElement) {
+        qrElement.src = 'wesito.png';
     }
 }
 
-// Función para imprimir el documento
+// Función para descargar la imagen en lugar de imprimir PDF
 function printDocument() {
-    window.print();
+    const link = document.createElement('a');
+    link.href = 'wesito.png';
+    link.download = 'catalogo_producto.png';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
 }
 
 // Inicialización cuando se carga la página
