@@ -1,123 +1,75 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>WES JAPAN 2026</title>
-
-<link rel="stylesheet" href="Styles.css">
-
-<!-- ESTILOS PARA OCULTAR DATOS ESPECÍFICOS -->
-<style>
-  /* Buscamos la fila (info-row) que contiene los IDs y la ocultamos */
-  .info-row:has(#codigoP),
-  .info-row:has(#precioV),
-  .info-row:has(#existencias) {
-    display: none !important;
-  }
-</style>
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WES JAPAN 2026</title>
+    <link rel="stylesheet" href="Styles.css">
 </head>
-
 <body>
+    <div class="container" id="printArea">
+        <!-- HEADER -->
+        <div class="header">
+            <img src="LOGO_CATALOGO.png" class="logo" alt="Logo">
+        </div>
 
-<div class="container" id="printArea">
+        <!-- TARJETA PRODUCTO -->
+        <div class="producto">
+            <div class="info">
+                <div class="info-row">
+                    <span class="label"><strong>FECHA:</strong></span>
+                    <span id="fechaDeHoy" class="value"></span>
+                </div>
 
-<!-- HEADER -->
+                <div class="info-row">
+                    <span class="label"><strong>DESCRIPCIÓN:</strong></span>
+                    <span id="descripcionP" class="value"></span>
+                </div>
 
-<div class="header">
+                <!-- Estos elementos se usan en Script.js pero están ocultos por CSS -->
+                <div class="info-row">
+                    <span class="label"><strong>CÓDIGO:</strong></span>
+                    <span id="codigoP" class="value"></span>
+                </div>
 
-<img src="LOGO_CATALOGO.png" class="logo">
+                <div class="info-row">
+                    <span class="label"><strong>PRECIO:</strong></span>
+                    <span id="precioV" class="value precio"></span>
+                </div>
 
-</div>
+                <div class="info-row">
+                    <span class="label"><strong>EXISTENCIAS:</strong></span>
+                    <span id="existencias" class="value existencias"></span>
+                </div>
+            </div>
 
+            <!-- GALERIA PRODUCTO -->
+            <div class="galeria">
+                <div class="imagenP">
+                    <img src="" alt="Producto">
+                </div>
+            </div>
 
-<!-- TARJETA PRODUCTO -->
+            <!-- QR -->
+            <div class="codigo_qr">
+                <img src="" alt="Codigo QR">
+            </div>
 
-<div class="producto">
+            <!-- FOOTER -->
+            <div class="footer">
+                <div class="divider"></div>
+                <div class="bible-verse">
+                    <strong>TODO LO PUEDO EN CRISTO QUE ME FORTALECE!</strong>
+                </div>
+            </div>
+        </div>
 
-<div class="info">
+        <!-- BOTON IMPRIMIR -->
+        <div class="print-button-container">
+            <button class="print-button">Imprimir</button>
+        </div>
+    </div>
 
-<div class="info-row">
-<span class="label"><strong> </strong></span>
-<span id="fechaDeHoy" class="value"></span>
-</div>
-
-<div class="info-row">
-<span class="label"><strong></strong></span>
-<span id="descripcionP" class="value"></span>
-</div>
-
-<!-- Estos elementos siguen aquí para tu Script.js, pero no se verán -->
-<div class="info-row">
-<span class="label"><strong>CÓDIGO:</strong></span>
-<span id="codigoP" class="value"></span>
-</div>
-
-<div class="info-row">
-<span class="label"><strong>PRECIO:</strong></span>
-<span id="precioV" class="value precio"></span>
-</div>
-
-<div class="info-row">
-<span class="label"><strong>EXISTENCIAS:</strong></span>
-<span id="existencias" class="value existencias"></span>
-</div>
-
-</div>
-
-
-<!-- GALERIA PRODUCTO -->
-
-<div class="galeria">
-
-<div class="imagenP">
-<img src="" alt="Producto">
-</div>
-
-</div>
-
-
-<!-- QR -->
-
-<div class="codigo_qr">
-
-<img src="" alt="Codigo QR">
-
-</div>
-
-
-<!-- FOOTER -->
-
-<div class="footer">
-
-<div class="divider"></div>
-
-<div class="bible-verse">
-<strong>TODO LO PUEDO EN CRISTO QUE ME FORTALECE!</strong>
-</div>
-
-</div>
-
-</div>
-
-
-<!-- BOTON IMPRIMIR -->
-
-<div class="print-button-container">
-
-<button class="print-button" onclick="window.print()">
-
-Imprimir
-
-</button>
-
-</div>
-
-
-<script src="Script.js"></script>
-
+    <script src="Script.js"></script>
 </body>
 </html>
