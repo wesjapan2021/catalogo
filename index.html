@@ -7,7 +7,9 @@
     <link rel="stylesheet" href="Styles.css">
 </head>
 <body>
+
     <div class="container" id="printArea">
+
         <!-- HEADER -->
         <div class="header">
             <img src="LOGO_CATALOGO.png" class="logo" alt="Logo">
@@ -15,6 +17,7 @@
 
         <!-- TARJETA PRODUCTO -->
         <div class="producto">
+
             <div class="info">
                 <div class="info-row">
                     <span class="label"><strong>FECHA:</strong></span>
@@ -26,7 +29,6 @@
                     <span id="descripcionP" class="value"></span>
                 </div>
 
-                <!-- Estos elementos se usan en Script.js pero están ocultos por CSS -->
                 <div class="info-row">
                     <span class="label"><strong>CÓDIGO:</strong></span>
                     <span id="codigoP" class="value"></span>
@@ -43,7 +45,7 @@
                 </div>
             </div>
 
-            <!-- GALERIA PRODUCTO -->
+            <!-- GALERIA -->
             <div class="galeria">
                 <div class="imagenP">
                     <img src="" alt="Producto">
@@ -62,13 +64,18 @@
                     <strong>TODO LO PUEDO EN CRISTO QUE ME FORTALECE!</strong>
                 </div>
             </div>
+
         </div>
 
-        <!-- BOTON IMPRIMIR -->
+        <!-- BOTON -->
         <div class="print-button-container">
-            <button class="print-button">Imprimir</button>
+            <button class="print-button">Descargar PNG</button>
         </div>
+
     </div>
+
+    <!-- LIBRERÍA PARA EXPORTAR -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 
     <script src="Script.js"></script>
 </body>
