@@ -29,29 +29,29 @@ function setValues() {
     document.getElementById("precioV").textContent = params.precioV;
     document.getElementById("existencias").textContent = params.existencias;
 
-    // 🔥 IMAGEN DESDE GOOGLE DRIVE (CORREGIDO)
+    // 🔥 IMAGEN DE DRIVE USANDO PROXY (SOLUCIÓN REAL)
     if (params.idImagenP) {
         const img = document.querySelector('.imagenP img');
 
-        img.crossOrigin = "anonymous";
-        img.src = `https://lh3.googleusercontent.com/d/${params.idImagenP}`;
+        const driveUrl = `https://drive.google.com/uc?export=view&id=${params.idImagenP}`;
+
+        // 👉 proxy evita CORS y bloqueos
+        img.src = `https://images.weserv.nl/?url=${encodeURIComponent(driveUrl)}`;
     }
 
-    // QR fijo
+    // QR
     document.querySelector('.codigo_qr img').src = 'wesito.png';
 }
 
 
-// 🔥 FUNCIÓN PARA EXPORTAR PNG
+// 🔥 EXPORTAR PNG
 async function printDocument() {
 
     const element = document.getElementById('printArea');
     const button = document.querySelector('.print-button-container');
 
-    // Ocultar botón
     button.style.display = 'none';
 
-    // 🔥 Esperar a que TODAS las imágenes carguen
     const images = element.querySelectorAll('img');
 
     await Promise.all(Array.from(images).map(img => {
@@ -63,11 +63,9 @@ async function printDocument() {
         });
     }));
 
-    // 🔥 Captura real
     html2canvas(element, {
         scale: 3,
         useCORS: true,
-        allowTaint: false,
         backgroundColor: null
     }).then(canvas => {
 
@@ -81,9 +79,7 @@ async function printDocument() {
 }
 
 
-// Inicialización
 window.onload = function () {
-
     setValues();
 
     document
