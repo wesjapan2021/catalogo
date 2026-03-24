@@ -1,4 +1,3 @@
-/* --- BASE STYLES --- */
 body {
   font-family: "Segoe UI", Roboto, Arial, sans-serif;
   margin: 0px;
@@ -12,7 +11,6 @@ body {
   margin: auto;
 }
 
-/* --- HEADER & LOGO --- */
 .header {
   max-width: 500px;
   margin: auto;
@@ -25,78 +23,54 @@ body {
 
 .logo {
   width: 100%;
-  max-width: 100%;
-  height: auto;
 }
 
-/* --- PRODUCT CARD --- */
 .producto {
   background: white;
   border-radius: 20px;
   padding: 28px;
   box-shadow: rgba(0, 0, 0, 0.08) 0px 10px 30px;
-  transition: 0.35s;
   max-width: 500px;
   margin: 25px auto;
 }
 
-.producto:hover {
-  transform: translateY(-5px);
-  box-shadow: rgba(0, 0, 0, 0.12) 0px 16px 40px;
-}
-
 .producto .imagenP img {
   width: 324px;
-  max-width: 100%;
   display: block;
   margin: 15px auto;
   border-radius: 10px;
-  object-fit: contain;
 }
 
-/* --- INFO ROWS --- */
 .info-row {
   display: flex;
   justify-content: space-between;
-  align-items: center;
   margin-bottom: 10px;
   border-bottom: 1px solid #eee;
-  padding-bottom: 5px;
 }
 
 .label {
   font-weight: bold;
-  color: #555;
-  text-transform: uppercase;
-  font-size: 0.9em;
 }
 
 .value {
   text-align: right;
-  color: #222;
 }
 
 .precio {
   font-size: 2em;
-  font-weight: 700;
   color: rgb(177, 18, 0);
 }
 
 .existencias {
-  font-size: 1.3em;
-  font-weight: 600;
-  color: rgb(95, 107, 117);
+  font-size: 1.2em;
 }
 
-/* --- OCULTAR DATOS ESPECÍFICOS --- */
-/* Ocultamos las filas de código, precio y existencias */
 .info-row:has(#codigoP),
 .info-row:has(#precioV),
 .info-row:has(#existencias) {
   display: none !important;
 }
 
-/* --- QR CODE --- */
 .codigo_qr {
   display: flex;
   justify-content: center;
@@ -106,61 +80,23 @@ body {
 .codigo_qr img {
   width: 65px;
   height: 65px;
-  border-radius: 8px;
-  background: white;
-  padding: 5px;
-  box-shadow: rgba(0, 0, 0, 0.08) 0px 4px 15px;
 }
 
-/* --- FOOTER --- */
 .footer {
-  margin-top: 30px;
   text-align: center;
+  margin-top: 20px;
 }
 
-.divider {
-  height: 2px;
-  background: radial-gradient(circle, #ccc 0%, transparent 70%);
-  margin-bottom: 15px;
-}
-
-.bible-verse {
-  font-style: italic;
-  color: #777;
-  font-size: 0.95em;
-  font-weight: 600;
-}
-
-/* --- PRINT & BUTTONS --- */
 .print-button-container {
   text-align: center;
-  margin-top: 25px;
+  margin-top: 20px;
 }
 
 .print-button {
-  background: linear-gradient(135deg, rgb(122, 13, 3), rgb(163, 21, 5));
+  padding: 12px 30px;
   border: none;
+  background: darkred;
   color: white;
-  padding: 14px 40px;
-  font-size: 18px;
-  border-radius: 35px;
+  border-radius: 20px;
   cursor: pointer;
-  transition: 0.3s;
-  box-shadow: rgba(0, 0, 0, 0.25) 0px 8px 18px;
-}
-
-.print-button:hover {
-  transform: translateY(-3px);
-  box-shadow: rgba(0, 0, 0, 0.3) 0px 12px 28px;
-}
-
-@media print {
-  body { background: white !important; padding: 0px !important; }
-  .print-button-container { display: none !important; }
-  .producto { box-shadow: none !important; border: 1px solid rgb(221, 221, 221); transform: none !important; }
-}
-
-@media (max-width: 768px) {
-  body { padding: 15px; }
-  .producto { padding: 20px; }
 }
