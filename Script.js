@@ -29,19 +29,20 @@ function setValues() {
     document.getElementById("precioV").textContent = params.precioV;
     document.getElementById("existencias").textContent = params.existencias;
 
+    // 🔥 IMAGEN DESDE GOOGLE DRIVE (CORREGIDO)
     if (params.idImagenP) {
         const img = document.querySelector('.imagenP img');
 
-        // 🔥 IMPORTANTE: usar proxy limpio para evitar CORS
         img.crossOrigin = "anonymous";
-        img.src = `https://drive.google.com/uc?export=view&id=${params.idImagenP}`;
+        img.src = `https://lh3.googleusercontent.com/d/${params.idImagenP}`;
     }
 
+    // QR fijo
     document.querySelector('.codigo_qr img').src = 'wesito.png';
 }
 
 
-// 🔥 FUNCIÓN PRO (ESPERA CARGA DE IMÁGENES)
+// 🔥 FUNCIÓN PARA EXPORTAR PNG
 async function printDocument() {
 
     const element = document.getElementById('printArea');
@@ -50,17 +51,19 @@ async function printDocument() {
     // Ocultar botón
     button.style.display = 'none';
 
-    // 🔥 ESPERAR A QUE TODAS LAS IMÁGENES CARGUEN
+    // 🔥 Esperar a que TODAS las imágenes carguen
     const images = element.querySelectorAll('img');
+
     await Promise.all(Array.from(images).map(img => {
         if (img.complete) return Promise.resolve();
+
         return new Promise(resolve => {
             img.onload = resolve;
             img.onerror = resolve;
         });
     }));
 
-    // 🔥 CAPTURA REAL
+    // 🔥 Captura real
     html2canvas(element, {
         scale: 3,
         useCORS: true,
@@ -77,7 +80,10 @@ async function printDocument() {
     });
 }
 
+
+// Inicialización
 window.onload = function () {
+
     setValues();
 
     document
