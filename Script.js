@@ -30,23 +30,42 @@ function setValues() {
     document.getElementById("existencias").textContent = params.existencias;
 
     if (params.idImagenP) {
-        document.querySelector('.imagenP img').src =
-            `https://drive.google.com/thumbnail?id=${params.idImagenP}&sz=4000`;
+        const img = document.querySelector('.imagenP img');
+
+        // 🔥 IMPORTANTE: usar proxy limpio para evitar CORS
+        img.crossOrigin = "anonymous";
+        img.src = `https://drive.google.com/uc?export=view&id=${params.idImagenP}`;
     }
 
     document.querySelector('.codigo_qr img').src = 'wesito.png';
 }
 
-// 🔥 EXPORTAR A PNG
-function printDocument() {
+
+// 🔥 FUNCIÓN PRO (ESPERA CARGA DE IMÁGENES)
+async function printDocument() {
+
     const element = document.getElementById('printArea');
     const button = document.querySelector('.print-button-container');
 
+    // Ocultar botón
     button.style.display = 'none';
 
+    // 🔥 ESPERAR A QUE TODAS LAS IMÁGENES CARGUEN
+    const images = element.querySelectorAll('img');
+    await Promise.all(Array.from(images).map(img => {
+        if (img.complete) return Promise.resolve();
+        return new Promise(resolve => {
+            img.onload = resolve;
+            img.onerror = resolve;
+        });
+    }));
+
+    // 🔥 CAPTURA REAL
     html2canvas(element, {
-        scale: 2,
-        useCORS: true
+        scale: 3,
+        useCORS: true,
+        allowTaint: false,
+        backgroundColor: null
     }).then(canvas => {
 
         button.style.display = 'block';
