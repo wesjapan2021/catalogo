@@ -1,80 +1,99 @@
+// Función para sanitizar el HTML
+function sanitizeHTML(str) {
+    const temp = document.createElement('div');
+    temp.textContent = str;
+    return temp.innerHTML;
+}
+
+// Función para formatear fecha a dd/mm/yyyy
+function formatDate(dateStr) {
+    if (!dateStr) return '';
+    try {
+        const date = new Date(dateStr);
+        if (isNaN(date.getTime())) return dateStr;
+        
+        const day = date.getDate().toString().padStart(2, '0');
+        const month = (date.getMonth() + 1).toString().padStart(2, '0');
+        const year = date.getFullYear();
+        
+        return `${day}/${month}/${year}`;
+    } catch (e) {
+        console.error('Error formateando fecha:', e);
+        return dateStr;
+    }
+}
+
+// Función para obtener y decodificar parámetros de la URL
 function getUrlParameters() {
     const urlParams = new URLSearchParams(window.location.search);
-    const params = {};
-    const keys = ['fechaDeHoy', 'descripcionP', 'codigoP', 'precioV', 'existencias', 'imagenP', 'idImagenP'];
-    
-    keys.forEach(key => {
-        params[key] = decodeURIComponent(urlParams.get(key) || '');
+    const params = {
+        fechaDeHoy: urlParams.get('fechaDeHoy') || '',
+        descripcionP: urlParams.get('descripcionP') || '',
+        codigoP: urlParams.get('codigoP') || '',
+        precioV: urlParams.get('precioV') || '',
+        existencias: urlParams.get('existencias') || '',
+        imagenP: urlParams.get('imagenP') || '',
+        idImagenP: urlParams.get('idImagenP') || '',
+        codigo_qr: urlParams.get('codigo_qr') || ''
+    };
+
+    Object.keys(params).forEach(key => {
+        try {
+            params[key] = decodeURIComponent(params[key] || '');
+        } catch (e) {
+            console.error(`Error decodificando ${key}:`, e);
+            params[key] = '';
+        }
     });
+
     return params;
 }
 
-function formatDate(dateStr) {
-    if (!dateStr) return new Date().toLocaleDateString('es-ES');
-    const date = new Date(dateStr);
-    return isNaN(date.getTime()) ? dateStr : date.toLocaleDateString('es-ES');
-}
-
+// Función para asignar valores a los elementos HTML
 function setValues() {
     const params = getUrlParameters();
     
+    // Asignar valores a los elementos por ID
     if(document.getElementById("fechaDeHoy")) document.getElementById("fechaDeHoy").textContent = formatDate(params.fechaDeHoy);
     if(document.getElementById("descripcionP")) document.getElementById("descripcionP").textContent = params.descripcionP;
     if(document.getElementById("codigoP")) document.getElementById("codigoP").textContent = params.codigoP;
     if(document.getElementById("precioV")) document.getElementById("precioV").textContent = params.precioV;
     if(document.getElementById("existencias")) document.getElementById("existencias").textContent = params.existencias;
     
-    const imgElement = document.getElementById('imgProducto');
-    if (imgElement) {
-        // Configuración para evitar problemas de CORS al descargar la imagen
-        imgElement.crossOrigin = "anonymous";
-
-        // Intentar cargar imagen local, si falla pasar a Google Drive
-        if (params.imagenP) {
-            // Quitamos la barra inicial si existe para que la ruta sea relativa a la carpeta 'catalogo'
-            const cleanPath = params.imagenP.startsWith('/') ? params.imagenP.substring(1) : params.imagenP;
-            imgElement.src = cleanPath;
-
-            // Si la imagen local falla, intenta con el ID de Drive
-            imgElement.onerror = function() {
-                if (params.idImagenP) {
-                    imgElement.src = `https://drive.google.com/thumbnail?id=${params.idImagenP}&sz=4000`;
-                }
-                imgElement.onerror = null; // Evitar bucle infinito
-            };
-        } else if (params.idImagenP) {
+    // Manejar la imagen del producto (Google Drive)
+    if (params.idImagenP) {
+        const imgElement = document.querySelector('.imagenP img');
+        if (imgElement) {
             imgElement.src = `https://drive.google.com/thumbnail?id=${params.idImagenP}&sz=4000`;
         }
     }
+
+    // Cargar la imagen wesito.png en lugar de generar código QR dinámicamente
+    const qrElement = document.querySelector('.codigo_qr img');
+    if (qrElement) {
+        qrElement.src = 'wesito.png';
+    }
 }
 
+// Función para descargar la imagen en lugar de imprimir PDF
 function printDocument() {
-    const printArea = document.getElementById('printArea');
-    const button = document.getElementById('btnDescargar');
-    
-    button.disabled = true;
-    button.textContent = 'Generando...';
-
-    html2canvas(printArea, {
-        useCORS: true,
-        allowTaint: false,
-        scale: 2,
-        backgroundColor: "#f6f7f9"
-    }).then(canvas => {
-        const link = document.createElement('a');
-        link.download = `producto_${new Date().getTime()}.png`;
-        link.href = canvas.toDataURL('image/png');
-        link.click();
-        button.disabled = false;
-        button.textContent = 'Descargar Imagen';
-    }).catch(err => {
-        console.error("Error al capturar:", err);
-        button.disabled = false;
-        button.textContent = 'Error - Reintentar';
-    });
+    const link = document.createElement('a');
+    link.href = 'wesito.png';
+    link.download = 'catalogo_producto.png';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
 }
 
-window.onload = () => {
-    setValues();
-    document.getElementById('btnDescargar').addEventListener('click', printDocument);
+// Inicialización cuando se carga la página
+window.onload = function() {
+    try {
+        setValues();
+        const printButton = document.querySelector('.print-button');
+        if (printButton) {
+            printButton.addEventListener('click', printDocument);
+        }
+    } catch (error) {
+        console.error('Error en la inicialización:', error);
+    }
 };
